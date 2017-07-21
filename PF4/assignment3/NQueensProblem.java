@@ -1,5 +1,7 @@
 package assignment3;
 
+package assignment3;
+
 /**
  * Name			:	NQueensProblem
  * Author		:	Anushtha Gupta
@@ -15,52 +17,52 @@ public class NQueensProblem {
     	 * @param dimensionOfBoard	:	Dimension of board
     	 * @return
     	 */
-	boolean safeQueenPlace(int chessboard[][], int rownumber, int columnnumber,
+	boolean safeQueenPlace(int chessBoard[][], int rowNumber, int columnNumber,
 			int dimensionofboard) {
 		int i, j;
 		// check particular board row on left side
-		for (i = 0; i < columnnumber; i++) {
-			if (chessboard[rownumber][i] == 1)
+		for (i = rowNumber; i >=0 ; i--) {
+			if (chessBoard[i][columnNumber] == 1)
 				return false;
 		}
 		// Check upper diagonal on left side
-		for (i = rownumber, j = columnnumber; i >= 0 & j >= 0; i--, j--) {
-			if (chessboard[i][j] == 1)
+		for (i = rowNumber, j = columnNumber; i >= 0 & j >= 0; i--, j--) {
+			if (chessBoard[i][j] == 1)
 				return false;
 		}
 		// Check lower diagonal on left side
-		for (i = rownumber, j = columnnumber; j >= 0 & i < dimensionofboard; i++, j--) {
-			if (chessboard[i][j] == 1)
+		for (i = rowNumber, j = columnNumber; i >= 0 & j < dimensionofboard; i--, j++) {
+			if (chessBoard[i][j] == 1)
 				return false;
 		}
 		return true;
 	}
 
-	boolean findQueenPlace(int chessboard[][], int columnnumber,
-			int dimensionofboard) {
+	boolean findQueenPlace(int chessBoard[][], int rowNumber,
+			int dimensionOfBoard) {
 
 		// check for illegal arguments passed in function
-		if (dimensionofboard <= 0 || columnnumber < 0) {
+		if (dimensionOfBoard <= 0 || rowNumber < 0) {
 			throw new IllegalArgumentException("You have passed wrong input");
 		} else {
-			if (columnnumber >= dimensionofboard) {
+			if (rowNumber >= dimensionOfBoard) {
 				return true;
 			}
-			for (int rownumber = 0; rownumber < dimensionofboard; rownumber++) {
-				if (safeQueenPlace(chessboard, rownumber, columnnumber,
-						dimensionofboard)) {
+			for (int columnNumber = 0; columnNumber < dimensionOfBoard; columnNumber++) {
+				if (safeQueenPlace(chessBoard, rowNumber, columnNumber,
+						dimensionOfBoard)) {
 
 					// placing queen on chessboard.s
-					chessboard[rownumber][columnnumber] = 1;
+					chessBoard[rowNumber][columnNumber] = 1;
 
 					/* recur to place rest of the queens */
-					if (findQueenPlace(chessboard, columnnumber + 1,
-							dimensionofboard)) {
+					if (findQueenPlace(chessBoard, rowNumber + 1,
+							dimensionOfBoard)) {
 						return true;
 					}
 
 					// Back tracking
-					chessboard[rownumber][columnnumber] = 0;
+					chessBoard[rowNumber][columnNumber] = 0;
 				}
 
 			}
