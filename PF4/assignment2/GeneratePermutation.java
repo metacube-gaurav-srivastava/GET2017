@@ -2,8 +2,8 @@
  * Name			:	Permutation
  * Author		:	Anushtha Gupta
  * Date			:	2017-07-18
- * Reference	:	Assignment 4 - Exercise 2
- * Description	:	This is used to generate all possible permutations out of the given string
+ * Reference		:	Assignment 4 - Exercise 2
+ * Description		:	This is used to generate all possible permutations out of the given string
  */
 package assignment2;
 
@@ -38,7 +38,6 @@ public class GeneratePermutation {
 
 	private void generatePermutation(String prefix, String inputString) {
 		if (inputString.length() == 0) {
-			// System.out.println(prefix);
 			permutatedString.add(prefix);
 		} else {
 			for (int i = 0; i < inputString.length(); i++) {
