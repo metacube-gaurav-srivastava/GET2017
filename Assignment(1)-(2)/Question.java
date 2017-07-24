@@ -62,10 +62,10 @@ public class Question implements Comparable<Question>{
 		this.optionFrequency = optionFrequency;
 	}
 	@Override
-	public int compareTo(Question q) {
+	public int compareTo(Question questionObject) {
 		// TODO Auto-generated method stub
 		
-		return getQuestionString().compareTo(q.questionString);
+		return getQuestionString().compareTo(questionObject.questionString);
 		
 		//return 0;
 	}
